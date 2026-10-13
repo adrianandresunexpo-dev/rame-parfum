@@ -1,0 +1,104 @@
+---
+description: Constitución de producto, alcance de Etapa 1 y reglas de implementación de Rame Parfum
+alwaysApply: true
+---
+
+# Rame Parfum — Project Context & Development Rules
+
+## 1. Propósito del proyecto
+
+Rame Parfum es una plataforma web de descubrimiento y catálogo de perfumes premium.
+
+Rame NO debe sentirse como un listado genérico de productos con filtros.
+
+La idea central es que el usuario pueda descubrir un perfume según: género, tipo, casa/marca, precio, perfil aromático, notas olfativas, ocasión de uso y características.
+
+El objetivo principal es ayudar al usuario a encontrar "el aroma que busca", incluso cuando no conoce el nombre exacto.
+
+Rame debe sentirse como una experiencia editorial y premium, no como un e-commerce genérico.
+
+## 2. Estado actual — ETAPA 1
+
+Construir únicamente la experiencia frontend.
+
+NO implementar: backend real, base de datos real, autenticación, pagos, pedidos, carrito funcional, favoritos funcionales, panel administrativo, integraciones bancarias, checkout.
+
+La arquitectura debe quedar preparada para añadir estas funcionalidades después.
+
+Objetivo inmediato: Home, navegación, catálogo, filtros, búsqueda, descubrimiento (aromas, ocasión, tipo, casa, precio), fichas, responsive.
+
+## 3. Stack
+
+Next.js, App Router, TypeScript, Tailwind CSS.
+
+Componentes propios. No usar un kit genérico de e-commerce. shadcn/ui solo para primitives (Dialog, Slider, Drawer).
+
+NO Zustand ni Redux en esta etapa. Filtros en la URL. Datos iniciales en TypeScript.
+
+## 4. Arquitectura
+
+`src/app`, `src/components/{layout,home,catalog,product,discovery,ui}`, `src/data`, `src/lib/{filters,scent,format}`, `src/types`, `src/config/{theme,navigation}`.
+
+La UI nunca debe leer directamente el array crudo de perfumes. Usar `getPerfumes`, `getPerfume`, `getHouse`, `getHousesByType`, `getPerfumesByHouse`, `getPerfumesByProfile`, `getPerfumesByOccasion`.
+
+## 5–11. Taxonomía y rutas
+
+Tipos: `disenador` | `arabe` | `nicho` | `inspiracion` — pertenecen al perfume, no a la casa.
+
+Géneros: `hombre` | `mujer` | `unisex` — navegación primaria visible (no escondida en filtros). Rutas `/hombre`, `/mujer`, `/unisex`. Catálogo general: `/catalogo`.
+
+Perfiles: `citrico`, `fresco`, `acuatico`, `floral`, `frutal`, `gourmand`, `especiado`, `ambarado`, `amaderado`, `verde`, `cuero`, `oud`.
+
+Ocasiones: `dia`, `noche`, `trabajo`, `casual`, `citas`, `eventos`, `salidas`.
+
+Búsqueda: nombre, casa, notas, perfil. Más que coincidencia literal. `/catalogo?q=` — no página de búsqueda separada.
+
+Filtros combinables en URL (`genero`, `tipo`, `casa`, `precio`, `perfil`, `ocasion`, `q`). El panel escribe en la URL; no estado paralelo.
+
+Rutas: `/`, `/catalogo`, `/tipo/[tipo]`, `/tipo/[tipo]/casas`, `/tipo/[tipo]/casas/[casa]`, `/casas`, `/casas/[slug]`, `/perfil/[perfil]`, `/ocasion/[ocasion]`, `/precio/[rango]`, `/perfume/[slug]`.
+
+## 12–21. Recorridos y contenido
+
+Tres recorridos: exploración abierta; tipo → casas → casa; casas → todos los perfumes de la casa.
+
+Home (orden): Hero, Descubre tu aroma, ocasión, tipo, casas, precio, destacados, Footer.
+
+Hero: potente y limpio. Logo, claim, composición visual. Evitar demasiados botones.
+
+Perfil aromático: afinidad 0–100, NO porcentaje químico. Términos: perfil, carácter, afinidad.
+
+Notas: pirámide salida → corazón → fondo.
+
+CTA: "Consultar disponibilidad" visual, sin operación. Inspiraciones: "Inspirado en", no "clon".
+
+## 22–25. Visual
+
+Paleta: marfil `#F5F1EA`, carbón `#171717`, negro `#24221F`, champagne `#B99A63`, beige `#DDD5C8`.
+
+Colores aromáticos solo como acentos. Serif editorial + sans funcional. Premium, minimalista, editorial. Mucho espacio negativo. Mobile-first.
+
+## 26–34. Componentes y alcance
+
+Layout: SiteHeader, GenderSwitch, SearchField, SiteFooter.
+
+Home: HeroBrand, ScentProfileCard, OccasionCard, TypeCard, HouseCard, PriceRangeCard, SectionHeader.
+
+Catalog / Product / Discovery según el brief.
+
+Visor 360: no implementar; preparar `images` con `role`.
+
+Mock: 16–24 perfumes, 8–12 casas, coherentes.
+
+No duplicar lógica de filtros. No backend, pagos, auth, carrito, favoritos. No arquitectura excesiva para el futuro.
+
+Si una decisión contradice este archivo, preguntar antes de cambiar la arquitectura.
+
+## 35–38. Filosofía
+
+Pregunta central: "¿Qué perfume estoy buscando?"
+
+No copiar My Choice Caracas ni Fragrantica.
+
+Próximo objetivo histórico: primera versión de la Home, por bloques, validar visualmente.
+
+Prioridad: UX → identidad → simplicidad → escalabilidad → rendimiento → complejidad mínima.
