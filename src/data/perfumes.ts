@@ -12804,7 +12804,7 @@ export const perfumes: Perfume[] = [
     houseSlug: "jo-milano",
     type: "nicho",
     gender: "unisex",
-    price: 98,
+    price: 125,
     sizeMl: 100,
     concentration: "Eau de Parfum",
     longevity: "Alta",
@@ -12841,7 +12841,7 @@ export const perfumes: Perfume[] = [
     houseSlug: "ralph",
     type: "disenador",
     gender: "mujer",
-    price: 68,
+    price: 85,
     sizeMl: 100,
     concentration: "Eau de Toilette",
     longevity: "Alta",
@@ -33697,7 +33697,7 @@ export const perfumes: Perfume[] = [
     profile: {"fresco":75,"amaderado":70,"citrico":65},
     images: [
       {
-        src: "https://www.sumerlabs.com/prod/devices/products/default_product_image.png",
+        src: "/perfumes/thierry-mugler-a-men.jpg",
         alt: "THIERRY MUGLER A*MEN 100ML CABALLERO EDT de thierry-mugler",
         role: "hero",
       },
