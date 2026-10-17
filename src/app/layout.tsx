@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Outfit } from "next/font/google";
 import "./globals.css";
 
@@ -13,6 +13,16 @@ const cormorant = Cormorant_Garamond({
   weight: ["400", "500", "600"],
 });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  viewportFit: "cover",
+  themeColor: "#f5f1ea",
+  colorScheme: "light",
+};
+
 export const metadata: Metadata = {
   title: {
     default: "Rame Parfum",
@@ -20,6 +30,16 @@ export const metadata: Metadata = {
   },
   description:
     "Catálogo premium de perfumes. Descubre por aroma, ocasión, casa y tipo.",
+  formatDetection: {
+    telephone: false,
+    email: false,
+    address: false,
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Rame Parfum",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

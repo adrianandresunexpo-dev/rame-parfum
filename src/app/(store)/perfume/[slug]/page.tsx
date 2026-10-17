@@ -85,8 +85,14 @@ export default async function PerfumePage({ params }: Props) {
       <div className="grid gap-12 lg:grid-cols-12 lg:items-start">
         {/* Columna Izquierda: Galería visual */}
         <div className="lg:col-span-5 lg:sticky lg:top-24">
-          <ProductGallery images={perfume.images} name={perfume.name} />
-          <BottleViewerPlaceholder images={perfume.images} />
+          <ProductGallery
+            images={perfume.images}
+            name={perfume.name}
+            houseName={house?.name}
+            concentration={perfume.concentration}
+            sizeMl={perfume.sizeMl}
+          />
+          <BottleViewerPlaceholder />
         </div>
 
         {/* Columna Derecha: Información completa */}
