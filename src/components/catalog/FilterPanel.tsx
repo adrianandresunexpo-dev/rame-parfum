@@ -34,7 +34,8 @@ function Chip({
       type="button"
       onClick={onClick}
       disabled={locked && active}
-      className={`border px-3 py-1.5 text-[11px] tracking-[0.12em] uppercase transition-all ${
+      suppressHydrationWarning
+      className={`border px-3 py-1.5 text-[11px] tracking-[0.12em] uppercase transition-colors ${
         active
           ? "border-champagne bg-champagne text-white shadow-sm font-medium"
           : "border-beige bg-white/70 text-charcoal/80 hover:border-champagne hover:text-champagne hover:bg-white"
