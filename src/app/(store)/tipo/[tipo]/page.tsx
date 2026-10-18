@@ -39,7 +39,7 @@ export default async function TipoDetailPage({ params, searchParams }: Props) {
   const houses = getHousesByType(tipo as PerfumeType);
 
   const intro = (
-    <div className="mt-8 border border-beige bg-[#efeae1] p-5">
+    <div className="mt-8 border border-beige bg-[#edf3f8] p-5">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p className="text-[10px] tracking-[0.2em] text-champagne uppercase">

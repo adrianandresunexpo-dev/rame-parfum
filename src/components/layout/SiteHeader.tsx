@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { genders } from "@/data/taxonomies";
@@ -19,14 +20,25 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-beige/80 bg-ivory/90 backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4 md:px-8">
-        <Link href="/" className="shrink-0" onClick={() => setOpen(false)}>
-          <span className="block font-serif text-2xl leading-none tracking-[0.18em] text-charcoal">
-            RAME
-          </span>
-          <span className="mt-1 block text-[10px] tracking-[0.42em] text-champagne uppercase">
-            Parfum
-          </span>
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3 md:px-8">
+        <Link href="/" className="flex items-center gap-3.5 shrink-0 group" onClick={() => setOpen(false)}>
+          <div className="relative h-11 w-11 overflow-hidden rounded-full ring-2 ring-slate-300/80 shadow-sm transition-transform duration-300 group-hover:scale-105 bg-slate-100">
+            <Image
+              src="/brand/logo.jpg"
+              alt="Logo Rame Parfum"
+              fill
+              className="object-cover scale-[1.12]"
+              priority
+            />
+          </div>
+          <div>
+            <span className="block font-serif text-2xl leading-none tracking-[0.18em] text-charcoal">
+              RAME
+            </span>
+            <span className="mt-1 block text-[10px] tracking-[0.42em] text-champagne uppercase font-medium">
+              Parfum
+            </span>
+          </div>
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Género">

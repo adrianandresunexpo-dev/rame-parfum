@@ -38,7 +38,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-y border-beige bg-[#efeae1]">
+      <section className="border-y border-beige bg-[#edf3f8]">
         <div className="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-24">
           <SectionHeader
             eyebrow="Momento"
@@ -120,7 +120,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-t border-beige bg-[#efeae1]">
+      <section className="border-t border-beige bg-[#edf3f8]">
         <div className="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-24">
           <SectionHeader
             eyebrow="Selección"

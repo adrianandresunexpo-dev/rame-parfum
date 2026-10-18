@@ -12,7 +12,7 @@ export function PerfumeCard({ perfume }: { perfume: Perfume }) {
 
   return (
     <Link href={`/perfume/${perfume.slug}`} className="group block">
-      <div className="border border-beige bg-[#efeae1]">
+      <div className="border border-beige bg-[#edf3f8] transition-colors group-hover:border-champagne/60">
         <div className="relative aspect-[4/5] overflow-hidden">
           {image ? (
             <Image

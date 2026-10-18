@@ -126,15 +126,15 @@ export function ProductGallery({
   const specularPos = ((normalizedAngle / 360) * 200 - 50).toFixed(1);
 
   return (
-    <div className="border border-beige bg-[#efeae1] shadow-sm select-none">
+    <div className="border border-beige bg-[#edf3f8] shadow-sm select-none">
       {/* Selector de modo: 360° Interactivo vs Fotografía */}
-      <div className="flex border-b border-beige/70 bg-ivory/60 text-xs tracking-[0.16em] uppercase">
+      <div className="flex border-b border-beige/70 bg-ivory/80 text-xs tracking-[0.16em] uppercase">
         <button
           type="button"
           onClick={() => setActiveTab("360")}
           className={`flex-1 py-3 px-3 text-center transition-colors flex items-center justify-center gap-2 ${
             activeTab === "360"
-              ? "bg-[#efeae1] font-medium text-charcoal border-b-2 border-champagne"
+              ? "bg-[#edf3f8] font-medium text-charcoal border-b-2 border-champagne"
               : "text-charcoal/60 hover:text-charcoal"
           }`}
         >
@@ -148,7 +148,7 @@ export function ProductGallery({
           onClick={() => setActiveTab("photo")}
           className={`flex-1 py-3 px-3 text-center transition-colors ${
             activeTab === "photo"
-              ? "bg-[#efeae1] font-medium text-charcoal border-b-2 border-champagne"
+              ? "bg-[#edf3f8] font-medium text-charcoal border-b-2 border-champagne"
               : "text-charcoal/60 hover:text-charcoal"
           }`}
         >
@@ -160,7 +160,7 @@ export function ProductGallery({
       <div className="relative aspect-[4/5] w-full overflow-hidden">
         {activeTab === "photo" ? (
           /* VISTA FOTOGRÁFICA CLÁSICA */
-          <div className="relative h-full w-full flex items-center justify-center p-8 bg-gradient-to-b from-[#f9f6f0] to-[#eae3d5]">
+          <div className="relative h-full w-full flex items-center justify-center p-8 bg-gradient-to-b from-[#ffffff] to-[#edf3f8]">
             {hero ? (
               <Image
                 src={hero.src}
@@ -183,7 +183,7 @@ export function ProductGallery({
             onPointerUp={handlePointerUp}
             onPointerCancel={handlePointerUp}
             style={{ touchAction: "none" }}
-            className={`relative h-full w-full flex items-center justify-center bg-gradient-to-b from-[#faf6ee] via-[#efeae1] to-[#dfd7c8] overflow-hidden ${
+            className={`relative h-full w-full flex items-center justify-center bg-gradient-to-b from-[#f8fafc] via-[#edf3f8] to-[#d8e2ed] overflow-hidden ${
               isDragging ? "cursor-grabbing" : "cursor-grab"
             }`}
           >
@@ -195,7 +195,7 @@ export function ProductGallery({
 
             {/* Pedestal circular 3D de exhibición */}
             <div
-              className="pointer-events-none absolute bottom-12 h-36 w-72 rounded-full border border-champagne/40 bg-gradient-to-b from-white/80 via-[#dfd7c8] to-[#c7bda9] shadow-[0_20px_40px_rgba(23,23,23,0.15)]"
+              className="pointer-events-none absolute bottom-12 h-36 w-72 rounded-full border border-champagne/40 bg-gradient-to-b from-white/90 via-[#d8e2ed] to-[#94a3b8] shadow-[0_20px_40px_rgba(15,35,60,0.18)]"
               style={{
                 transform: `rotateX(68deg) scale(${isZoomed ? 1.2 : 1})`,
                 transition: "transform 0.3s ease-out",

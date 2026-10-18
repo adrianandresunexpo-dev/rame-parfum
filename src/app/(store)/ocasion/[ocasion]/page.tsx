@@ -36,7 +36,7 @@ export default async function OcasionDetailPage({ params, searchParams }: Props)
   }
 
   const intro = (
-    <div className="mt-8 border border-beige bg-[#efeae1] p-5">
+    <div className="mt-8 border border-beige bg-[#edf3f8] p-5">
       <p className="text-[10px] tracking-[0.2em] text-champagne uppercase">
         Momento sugerido
       </p>

@@ -36,7 +36,7 @@ export default async function PerfilDetailPage({ params, searchParams }: Props) 
   }
 
   const intro = (
-    <div className="mt-8 border border-beige bg-[#efeae1] p-5">
+    <div className="mt-8 border border-beige bg-[#edf3f8] p-5">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-3">
           <span

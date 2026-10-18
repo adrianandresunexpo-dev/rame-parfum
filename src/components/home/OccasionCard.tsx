@@ -10,7 +10,7 @@ export function OccasionCard({ href, title, description }: Props) {
   return (
     <Link
       href={href}
-      className="group flex min-h-[11rem] flex-col justify-end border border-beige bg-ivory p-6 transition-colors hover:bg-[#efeae1]"
+      className="group flex min-h-[11rem] flex-col justify-end border border-beige bg-ivory p-6 transition-colors hover:bg-[#edf3f8] hover:border-champagne/60"
     >
       <h3 className="font-serif text-2xl text-charcoal">{title}</h3>
       <p className="mt-2 text-sm leading-relaxed text-charcoal/60">{description}</p>

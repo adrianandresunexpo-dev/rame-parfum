@@ -1,11 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --ivory: #f5f1ea;
-  --charcoal: #171717;
-  --charcoal-soft: #24221f;
-  --champagne: #b99a63;
-  --beige: #ddd5c8;
+  --ivory: #f8fafc;
+  --charcoal: #0c1523;
+  --charcoal-soft: #182333;
+  --champagne: #194473;
+  --champagne-light: #225a99;
+  --beige: #d8e1eb;
+  --surface-subtle: #edf3f8;
   --background: var(--ivory);
   --foreground: var(--charcoal);
 }
@@ -15,7 +17,9 @@
   --color-charcoal: var(--charcoal);
   --color-charcoal-soft: var(--charcoal-soft);
   --color-champagne: var(--champagne);
+  --color-champagne-light: var(--champagne-light);
   --color-beige: var(--beige);
+  --color-surface-subtle: var(--surface-subtle);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-outfit);

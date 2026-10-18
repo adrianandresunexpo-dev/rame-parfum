@@ -11,9 +11,9 @@ type Props = {
 };
 
 const styles = {
-  gold: "bg-champagne text-charcoal hover:bg-[#c9ad78]",
-  dark: "bg-charcoal text-ivory hover:bg-charcoal-soft",
-  ghost: "border border-beige bg-transparent text-charcoal hover:border-champagne",
+  gold: "bg-champagne text-white hover:bg-champagne-light shadow-sm",
+  dark: "bg-charcoal text-ivory hover:bg-charcoal-soft shadow-sm",
+  ghost: "border border-beige bg-white/80 text-charcoal hover:border-champagne hover:text-champagne transition-colors",
 };
 
 export function Button({
