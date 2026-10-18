@@ -3,6 +3,7 @@ import { getOccasionMeta, getGenderLabel, getTypeMeta } from "@/data/taxonomies"
 import { formatSize, formatUsd } from "@/lib/format";
 import type { Perfume } from "@/types/perfume";
 import { getHouse } from "@/data/houses";
+import { getPerfume } from "@/lib/catalog";
 
 export function ProductHeader({ perfume }: { perfume: Perfume }) {
   const house = getHouse(perfume.houseSlug);
@@ -23,15 +24,21 @@ export function ProductHeader({ perfume }: { perfume: Perfume }) {
       {perfume.inspiredBy ? (
         <p className="mt-4 text-sm text-charcoal/70">
           Inspirado en{" "}
-          {perfume.inspiredBy.slug ? (
+          {perfume.inspiredBy.slug && getPerfume(perfume.inspiredBy.slug) ? (
             <Link
               href={`/perfume/${perfume.inspiredBy.slug}`}
-              className="underline decoration-champagne underline-offset-4"
+              className="underline decoration-champagne underline-offset-4 hover:text-charcoal"
             >
               {perfume.inspiredBy.name}
             </Link>
           ) : (
-            <span>{perfume.inspiredBy.name}</span>
+            <Link
+              href={`/catalogo?q=${encodeURIComponent(perfume.inspiredBy.name)}`}
+              className="underline decoration-champagne underline-offset-4 hover:text-charcoal"
+              title={`Buscar ${perfume.inspiredBy.name} en el catálogo`}
+            >
+              {perfume.inspiredBy.name}
+            </Link>
           )}
         </p>
       ) : null}
