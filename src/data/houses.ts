@@ -512,12 +512,6 @@ export const houses: House[] = [
     tagline: "Fragancias distintivas de SHAKIRA.",
   },
   {
-    slug: "disney",
-    name: "Disney",
-    origin: "Internacional",
-    tagline: "Fragancias distintivas de DISNEY.",
-  },
-  {
     slug: "davidoff",
     name: "Davidoff",
     origin: "Internacional",
