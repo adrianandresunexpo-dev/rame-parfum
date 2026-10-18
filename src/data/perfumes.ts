@@ -33660,7 +33660,7 @@ export const perfumes: Perfume[] = [
     profile: {"fresco":75,"amaderado":70,"citrico":65},
     images: [
       {
-        src: "https://www.sumerlabs.com/prod/devices/products/default_product_image.png",
+        src: "/perfumes/thierry-mugler-a-men.jpg",
         alt: "THIERRY MUGLER A*MEN 100ML CABALLERO EDT de thierry-mugler",
         role: "hero",
       },

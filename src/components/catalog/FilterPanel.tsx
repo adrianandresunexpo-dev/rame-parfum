@@ -99,10 +99,27 @@ export function FilterPanel() {
     filters.priceSlug && !locked.priceSlug,
   ].filter(Boolean).length;
 
+  // Estado de secciones colapsables (acordeón)
+  const [openSections, setOpenSections] = useState<Record<string, boolean>>({
+    gender: true,
+    type: true,
+    priceSlug: true, // Precio visible para que no quede enterrado abajo
+    house: false,
+    profile: false,
+    occasion: false,
+  });
+
+  const toggleSection = (section: string) => {
+    setOpenSections((prev) => ({
+      ...prev,
+      [section]: !prev[section],
+    }));
+  };
+
   const filterContent = (
-    <div className="space-y-8">
-      <div className="flex items-center justify-between border-b border-beige/60 pb-3">
-        <p className="text-[11px] tracking-[0.24em] text-champagne uppercase">
+    <div className="space-y-4">
+      <div className="flex items-center justify-between border-b border-beige/60 pb-3 mb-2">
+        <p className="text-[11px] tracking-[0.24em] text-champagne uppercase font-medium">
           Filtros {activeCount > 0 ? `(${activeCount})` : ""}
         </p>
         {activeCount > 0 ? (
@@ -116,117 +133,297 @@ export function FilterPanel() {
         ) : null}
       </div>
 
+      {/* GÉNERO */}
       {!locked.gender ? (
-        <fieldset>
-          <legend className="mb-3 text-xs tracking-[0.16em] text-charcoal/55 uppercase">
-            Género
-          </legend>
-          <div className="flex flex-wrap gap-2">
-            {genders.map((item) => (
-              <Chip
-                key={item.slug}
-                active={filters.gender === item.slug}
-                onClick={() => toggle("gender", item.slug)}
+        <fieldset className="border-b border-beige/40 pb-4">
+          <legend className="w-full">
+            <button
+              type="button"
+              onClick={() => toggleSection("gender")}
+              className="flex w-full items-center justify-between py-1 text-left text-xs tracking-[0.16em] text-charcoal/80 uppercase hover:text-charcoal focus:outline-none"
+            >
+              <span className="font-semibold flex items-center gap-2">
+                Género
+                {filters.gender && (
+                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-champagne" />
+                )}
+              </span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className={`transition-transform duration-200 text-charcoal/50 ${
+                  openSections.gender ? "rotate-180" : ""
+                }`}
               >
-                {item.label}
-              </Chip>
-            ))}
-          </div>
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+          </legend>
+          {openSections.gender && (
+            <div className="flex flex-wrap gap-2 pt-3">
+              {genders.map((item) => (
+                <Chip
+                  key={item.slug}
+                  active={filters.gender === item.slug}
+                  onClick={() => toggle("gender", item.slug)}
+                >
+                  {item.label}
+                </Chip>
+              ))}
+            </div>
+          )}
         </fieldset>
       ) : null}
 
+      {/* TIPO */}
       {!locked.type ? (
-        <fieldset>
-          <legend className="mb-3 text-xs tracking-[0.16em] text-charcoal/55 uppercase">
-            Tipo
-          </legend>
-          <div className="flex flex-wrap gap-2">
-            {perfumeTypes.map((item) => (
-              <Chip
-                key={item.slug}
-                active={filters.type === item.slug}
-                onClick={() => toggle("type", item.slug)}
+        <fieldset className="border-b border-beige/40 pb-4">
+          <legend className="w-full">
+            <button
+              type="button"
+              onClick={() => toggleSection("type")}
+              className="flex w-full items-center justify-between py-1 text-left text-xs tracking-[0.16em] text-charcoal/80 uppercase hover:text-charcoal focus:outline-none"
+            >
+              <span className="font-semibold flex items-center gap-2">
+                Tipo
+                {filters.type && (
+                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-champagne" />
+                )}
+              </span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className={`transition-transform duration-200 text-charcoal/50 ${
+                  openSections.type ? "rotate-180" : ""
+                }`}
               >
-                {item.shortLabel}
-              </Chip>
-            ))}
-          </div>
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+          </legend>
+          {openSections.type && (
+            <div className="flex flex-wrap gap-2 pt-3">
+              {perfumeTypes.map((item) => (
+                <Chip
+                  key={item.slug}
+                  active={filters.type === item.slug}
+                  onClick={() => toggle("type", item.slug)}
+                >
+                  {item.shortLabel}
+                </Chip>
+              ))}
+            </div>
+          )}
         </fieldset>
       ) : null}
 
-      {!locked.house ? (
-        <fieldset>
-          <legend className="mb-3 text-xs tracking-[0.16em] text-charcoal/55 uppercase">
-            Casa
-          </legend>
-          <div className="flex flex-wrap gap-2">
-            {houses.map((item) => (
-              <Chip
-                key={item.slug}
-                active={filters.house === item.slug}
-                onClick={() => toggle("house", item.slug)}
-              >
-                {item.name}
-              </Chip>
-            ))}
-          </div>
-        </fieldset>
-      ) : null}
-
-      {!locked.profile ? (
-        <fieldset>
-          <legend className="mb-3 text-xs tracking-[0.16em] text-charcoal/55 uppercase">
-            Perfil aromático
-          </legend>
-          <div className="flex flex-wrap gap-2">
-            {scentProfiles.map((item) => (
-              <Chip
-                key={item.slug}
-                active={filters.profile === item.slug}
-                onClick={() => toggle("profile", item.slug)}
-              >
-                {item.label}
-              </Chip>
-            ))}
-          </div>
-        </fieldset>
-      ) : null}
-
-      {!locked.occasion ? (
-        <fieldset>
-          <legend className="mb-3 text-xs tracking-[0.16em] text-charcoal/55 uppercase">
-            Ocasión
-          </legend>
-          <div className="flex flex-wrap gap-2">
-            {occasions.map((item) => (
-              <Chip
-                key={item.slug}
-                active={filters.occasion === item.slug}
-                onClick={() => toggle("occasion", item.slug)}
-              >
-                {item.label}
-              </Chip>
-            ))}
-          </div>
-        </fieldset>
-      ) : null}
-
+      {/* PRECIO (USD) - Puesto antes para que sea fácil de encontrar */}
       {!locked.priceSlug ? (
-        <fieldset>
-          <legend className="mb-3 text-xs tracking-[0.16em] text-charcoal/55 uppercase">
-            Precio (USD)
-          </legend>
-          <div className="flex flex-wrap gap-2">
-            {priceRanges.map((item) => (
-              <Chip
-                key={item.slug}
-                active={filters.priceSlug === item.slug}
-                onClick={() => toggle("priceSlug", item.slug)}
+        <fieldset className="border-b border-beige/40 pb-4">
+          <legend className="w-full">
+            <button
+              type="button"
+              onClick={() => toggleSection("priceSlug")}
+              className="flex w-full items-center justify-between py-1 text-left text-xs tracking-[0.16em] text-charcoal/80 uppercase hover:text-charcoal focus:outline-none"
+            >
+              <span className="font-semibold flex items-center gap-2">
+                Precio (USD)
+                {filters.priceSlug && (
+                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-champagne" />
+                )}
+              </span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className={`transition-transform duration-200 text-charcoal/50 ${
+                  openSections.priceSlug ? "rotate-180" : ""
+                }`}
               >
-                {item.label}
-              </Chip>
-            ))}
-          </div>
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+          </legend>
+          {openSections.priceSlug && (
+            <div className="flex flex-wrap gap-2 pt-3">
+              {priceRanges.map((item) => (
+                <Chip
+                  key={item.slug}
+                  active={filters.priceSlug === item.slug}
+                  onClick={() => toggle("priceSlug", item.slug)}
+                >
+                  {item.label}
+                </Chip>
+              ))}
+            </div>
+          )}
+        </fieldset>
+      ) : null}
+
+      {/* CASA */}
+      {!locked.house ? (
+        <fieldset className="border-b border-beige/40 pb-4">
+          <legend className="w-full">
+            <button
+              type="button"
+              onClick={() => toggleSection("house")}
+              className="flex w-full items-center justify-between py-1 text-left text-xs tracking-[0.16em] text-charcoal/80 uppercase hover:text-charcoal focus:outline-none"
+            >
+              <span className="font-semibold flex items-center gap-2">
+                Casa / Marca
+                {filters.house && (
+                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-champagne" />
+                )}
+              </span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className={`transition-transform duration-200 text-charcoal/50 ${
+                  openSections.house ? "rotate-180" : ""
+                }`}
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+          </legend>
+          {openSections.house && (
+            <div className="flex flex-wrap gap-2 pt-3 max-h-60 overflow-y-auto pr-1">
+              {houses.map((item) => (
+                <Chip
+                  key={item.slug}
+                  active={filters.house === item.slug}
+                  onClick={() => toggle("house", item.slug)}
+                >
+                  {item.name}
+                </Chip>
+              ))}
+            </div>
+          )}
+        </fieldset>
+      ) : null}
+
+      {/* PERFIL AROMÁTICO */}
+      {!locked.profile ? (
+        <fieldset className="border-b border-beige/40 pb-4">
+          <legend className="w-full">
+            <button
+              type="button"
+              onClick={() => toggleSection("profile")}
+              className="flex w-full items-center justify-between py-1 text-left text-xs tracking-[0.16em] text-charcoal/80 uppercase hover:text-charcoal focus:outline-none"
+            >
+              <span className="font-semibold flex items-center gap-2">
+                Perfil aromático
+                {filters.profile && (
+                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-champagne" />
+                )}
+              </span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className={`transition-transform duration-200 text-charcoal/50 ${
+                  openSections.profile ? "rotate-180" : ""
+                }`}
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+          </legend>
+          {openSections.profile && (
+            <div className="flex flex-wrap gap-2 pt-3">
+              {scentProfiles.map((item) => (
+                <Chip
+                  key={item.slug}
+                  active={filters.profile === item.slug}
+                  onClick={() => toggle("profile", item.slug)}
+                >
+                  {item.label}
+                </Chip>
+              ))}
+            </div>
+          )}
+        </fieldset>
+      ) : null}
+
+      {/* OCASIÓN */}
+      {!locked.occasion ? (
+        <fieldset className="border-b border-beige/40 pb-4">
+          <legend className="w-full">
+            <button
+              type="button"
+              onClick={() => toggleSection("occasion")}
+              className="flex w-full items-center justify-between py-1 text-left text-xs tracking-[0.16em] text-charcoal/80 uppercase hover:text-charcoal focus:outline-none"
+            >
+              <span className="font-semibold flex items-center gap-2">
+                Ocasión
+                {filters.occasion && (
+                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-champagne" />
+                )}
+              </span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className={`transition-transform duration-200 text-charcoal/50 ${
+                  openSections.occasion ? "rotate-180" : ""
+                }`}
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+          </legend>
+          {openSections.occasion && (
+            <div className="flex flex-wrap gap-2 pt-3">
+              {occasions.map((item) => (
+                <Chip
+                  key={item.slug}
+                  active={filters.occasion === item.slug}
+                  onClick={() => toggle("occasion", item.slug)}
+                >
+                  {item.label}
+                </Chip>
+              ))}
+            </div>
+          )}
         </fieldset>
       ) : null}
     </div>
