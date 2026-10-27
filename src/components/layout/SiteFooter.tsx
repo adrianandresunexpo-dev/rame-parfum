@@ -24,9 +24,17 @@ export function SiteFooter() {
             </div>
           </div>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-charcoal/65">
-            Un catálogo para descubrir perfume por aroma, ocasión y casa. Preparado
-            para convertirse en tienda.
+            Un catálogo para descubrir perfume por aroma, ocasión y casa. Atención personalizada directa.
           </p>
+          <a
+            href="https://wa.me/584129221902?text=¡Hola%20Rame%20Parfum!%20Me%20gustar%C3%ADa%20hacer%20una%20consulta."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-flex items-center gap-2 text-xs font-semibold text-emerald-700 hover:text-emerald-800 transition-colors"
+          >
+            <span className="flex h-2 w-2 rounded-full bg-[#25D366] animate-pulse" />
+            WhatsApp: +58 412 9221902
+          </a>
         </div>
         <div>
           <p className="text-[11px] tracking-[0.22em] text-champagne uppercase">Explorar</p>

@@ -51,9 +51,9 @@ export default async function PerfumePage({ params }: Props) {
     .slice(0, 3);
 
   return (
-    <article className="mx-auto max-w-6xl px-5 py-10 md:px-8 md:py-16">
+    <article className="mx-auto max-w-6xl px-4 py-5 sm:px-8 sm:py-12">
       {/* Breadcrumbs editoriales */}
-      <nav aria-label="Ruta de navegación" className="mb-8">
+      <nav aria-label="Ruta de navegación" className="mb-4 sm:mb-8">
         <ol className="flex items-center gap-2 text-[10px] tracking-[0.2em] text-charcoal/50 uppercase">
           <li>
             <Link href="/" className="hover:text-charcoal">
@@ -82,7 +82,7 @@ export default async function PerfumePage({ params }: Props) {
       </nav>
 
       {/* Grid principal de la ficha */}
-      <div className="grid gap-12 lg:grid-cols-12 lg:items-start">
+      <div className="grid gap-6 lg:gap-12 lg:grid-cols-12 lg:items-start">
         {/* Columna Izquierda: Galería visual */}
         <div className="lg:col-span-5 lg:sticky lg:top-24">
           <ProductGallery
@@ -111,7 +111,7 @@ export default async function PerfumePage({ params }: Props) {
 
           <ProductMeta perfume={perfume} />
 
-          <AvailabilityCta />
+          <AvailabilityCta perfume={perfume} />
 
           {/* Perfil aromático (Barras de afinidad olfativa) */}
           <ScentProfileMeter perfume={perfume} />
@@ -144,7 +144,7 @@ export default async function PerfumePage({ params }: Props) {
             ) : null}
           </div>
 
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {relatedFromHouse.map((related) => (
               <PerfumeCard key={related.slug} perfume={related} />
             ))}
