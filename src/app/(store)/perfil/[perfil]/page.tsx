@@ -50,8 +50,8 @@ export default async function PerfilDetailPage({ params, searchParams }: Props) 
             </p>
             <p className="text-sm text-charcoal/70">
               Acordes y notas habituales:{" "}
-              <span className="text-charcoal capitalize">
-                {meta.searchTerms.slice(0, 5).join(", ")}
+              <span className="text-charcoal">
+                {meta.displayNotes.join(", ")}
               </span>
             </p>
           </div>

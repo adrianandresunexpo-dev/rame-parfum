@@ -52,12 +52,14 @@ export const scentProfiles: {
   slug: ScentProfile;
   label: string;
   accent: string;
+  displayNotes: string[];
   searchTerms: string[];
 }[] = [
   {
     slug: "citrico",
     label: "Cítrico",
     accent: "#C6B43A",
+    displayNotes: ["Bergamota", "Limón", "Mandarina", "Pomelo", "Naranja", "Lima"],
     searchTerms: [
       "citrico",
       "cítrico",
@@ -75,24 +77,28 @@ export const scentProfiles: {
     slug: "fresco",
     label: "Fresco",
     accent: "#7A9E8A",
+    displayNotes: ["Menta", "Lavanda", "Romero", "Acordes aromáticos", "Brisa marina"],
     searchTerms: ["fresco", "frescura", "menta", "lavanda", "aromatico"],
   },
   {
     slug: "acuatico",
     label: "Acuático",
     accent: "#5B8FA8",
+    displayNotes: ["Notas marinas", "Brisa oceánica", "Algas", "Agua fresca", "Loto"],
     searchTerms: ["acuatico", "acuático", "marino", "agua", "oceano", "océano"],
   },
   {
     slug: "floral",
     label: "Floral",
     accent: "#C9A3B0",
+    displayNotes: ["Rosa", "Jazmín", "Peonía", "Flor de azahar", "Iris", "Magnolia"],
     searchTerms: ["floral", "rosa", "jazmin", "jazmín", "flor", "peonia", "peonía"],
   },
   {
     slug: "frutal",
     label: "Frutal",
     accent: "#C47B6A",
+    displayNotes: ["Manzana", "Piña", "Durazno", "Frutos rojos", "Melocotón", "Pera"],
     searchTerms: [
       "frutal",
       "fruta",
@@ -108,6 +114,7 @@ export const scentProfiles: {
     slug: "gourmand",
     label: "Dulce / Gourmand",
     accent: "#C08A4A",
+    displayNotes: ["Vainilla", "Caramelo", "Praliné", "Chocolate", "Canela", "Haba tonka"],
     searchTerms: [
       "gourmand",
       "dulce",
@@ -123,36 +130,42 @@ export const scentProfiles: {
     slug: "especiado",
     label: "Especiado",
     accent: "#B85C38",
+    displayNotes: ["Cardamomo", "Pimienta negra", "Canela", "Clavo de olor", "Nuez moscada"],
     searchTerms: ["especiado", "especia", "pimienta", "cardamomo", "clavo", "canela"],
   },
   {
     slug: "ambarado",
     label: "Ambarado",
     accent: "#C4A574",
+    displayNotes: ["Ámbar", "Resinas doradas", "Vainilla oriental", "Mirra", "Benjuí"],
     searchTerms: ["ambarado", "ambar", "ámbar", "ámbarado", "amber"],
   },
   {
     slug: "amaderado",
     label: "Amaderado",
     accent: "#6B4F32",
+    displayNotes: ["Madera de cedro", "Sándalo", "Vetiver", "Pachulí", "Abedul"],
     searchTerms: ["amaderado", "madera", "cedro", "sándalo", "sandalo", "vetiver", "abedul"],
   },
   {
     slug: "verde",
     label: "Verde",
     accent: "#6B8F71",
+    displayNotes: ["Gálbano", "Hojas verdes", "Té verde", "Hierba fresca", "Higo"],
     searchTerms: ["verde", "galbano", "hoja", "hierba", "te verde", "té"],
   },
   {
     slug: "cuero",
     label: "Cuero",
     accent: "#4A3728",
+    displayNotes: ["Cuero curtido", "Gamuza", "Ante", "Humo aromático"],
     searchTerms: ["cuero", "leather", "gamuza", "ante"],
   },
   {
     slug: "oud",
     label: "Oud",
     accent: "#2C241C",
+    displayNotes: ["Madera de Agar (Oud)", "Resinas oscuras", "Incienso oriental"],
     searchTerms: ["oud", "oudh", "agarwood", "madera de agar"],
   },
 ];
