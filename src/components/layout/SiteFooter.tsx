@@ -78,8 +78,12 @@ export function SiteFooter() {
           </ul>
         </div>
       </div>
-      <div className="border-t border-beige px-5 py-6 text-center text-[11px] tracking-[0.14em] text-charcoal/50 uppercase">
-        Rame Parfum · Catálogo · USD
+      <div className="border-t border-beige px-5 py-6 text-center text-[11px] tracking-[0.14em] text-charcoal/50 uppercase flex items-center justify-center gap-2">
+        <span>Rame Parfum · Catálogo · USD</span>
+        <span>·</span>
+        <Link href="/admin" className="hover:text-champagne transition-colors underline underline-offset-2">
+          Admin
+        </Link>
       </div>
     </footer>
   );
